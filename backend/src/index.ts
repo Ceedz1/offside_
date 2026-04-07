@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import newsRouter from './routes/newsRoutes.ts';
-import matchesRouter from './routes/matchesRoutes.ts';
+//import matchesRouter from './routes/matchesRoutes.ts';
 
 dotenv.config();
 
