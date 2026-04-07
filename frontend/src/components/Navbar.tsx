@@ -11,9 +11,9 @@ export default function Navbar() {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
     return (
-        <div className='fixed border-b-4 border-blue-700 px-6 py-3 flex justify-around items-center gap-8 w-full'>
+        <div className='fixed bg-[#0B0D11] border-b-4 border-blue-700 px-6 py-3 pl-50 flex items-center gap-8 w-full'>
             <img src={navLogo} alt="Offside Logo" className='h-7.5' />
-            <div className="flex items-center gap-6 ml-4">
+            <div className="flex items-center font-bold gap-6 ml-4">
                 {navLinks.map((link) => (
                 <div key={link.label} className="relative">
                     <button
