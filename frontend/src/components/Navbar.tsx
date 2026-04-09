@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import navLogo from '../assets/navLogo.png'
+import { Link } from 'react-router-dom';
+import navLogo from '../assets/navLogo.png';
+
 
 const navLinks = [
     { label: "Matches", href: "#", dropdown: false },
@@ -11,8 +13,10 @@ export default function Navbar() {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
     return (
-        <div className='fixed bg-[#0B0D11] border-b-4 border-blue-700 px-6 py-3 pl-50 flex items-center gap-8 w-full'>
-            <img src={navLogo} alt="Offside Logo" className='h-7.5' />
+        <div className='fixed bg-[#0B0D11] border-b-4 border-blue-700 px-6 py-3 pl-50 flex items-center gap-8 w-full z-50'>
+            <Link to="/">
+            <img src={navLogo} alt="Offside Logo" className="h-10 w-auto" />
+            </Link>
             <div className="flex items-center font-bold gap-6 ml-4">
                 {navLinks.map((link) => (
                 <div key={link.label} className="relative">
