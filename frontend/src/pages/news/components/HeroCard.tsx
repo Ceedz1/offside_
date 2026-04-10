@@ -26,7 +26,7 @@ export default function HerCard({ article }:Props) {
 
             <div className="flex flex-col p-5 justify-between">
                 <div className="flex flex-col gap-3">
-                    <span className="text-xs text-gray-400">{formatDate(article.publishedAt)}</span>
+                    <span className="text-sm text-gray-400">{formatDate(article.publishedAt)}</span>
                     <h2 className="text-[24px] font-bold text-white leading-snug group-hover:text-gray-200 transition-colors line-clamp-3">
                         {article.title}
                     </h2>
@@ -35,13 +35,21 @@ export default function HerCard({ article }:Props) {
                             {article.description}
                         </p>
                     )}
-                    {article.author && (
-                        <p className="text-[16px] text-gray-400 line-clamp-4">
-                            {article.author}
-                        </p>
-                    )}
                 </div>
-                <span className="text-sm text-gray-500">{timeAgo(article.publishedAt)}</span>
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                        src={`https://www.google.com/s2/favicons?domain=${article.url}&sz=32`}
+                        alt={article.source.name}
+                        className="w-5 h-5 rounded-full"
+                    />
+                    {article.author && (
+                        <>
+                        <span className="line-clamp-1">{article.author}</span>
+                        <span className="text-gray-600">·</span>
+                        </>
+                    )}
+                    <span>{timeAgo(article.publishedAt)}</span>
+                </div>
                 <div className="flex justify-end mt-4">
                     <ShareIcon />
                 </div>

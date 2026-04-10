@@ -42,7 +42,8 @@ export default function HorizontalCard({ article }: Props) {
               {article.description}
             </p>
           )}
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+        </div>
+        <div className="flex items-center gap-2 text-sm text-gray-400">
             <img
                 src={`https://www.google.com/s2/favicons?domain=${article.url}&sz=32`}
                 alt={article.source.name}
@@ -56,7 +57,6 @@ export default function HorizontalCard({ article }: Props) {
             )}
             <span>{timeAgo(article.publishedAt)}</span>
          </div>
-        </div>
 
         {/* Share icon */}
         <div className="flex justify-end mt-2">
