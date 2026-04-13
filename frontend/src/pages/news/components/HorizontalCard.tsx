@@ -5,15 +5,22 @@ import { timeAgo } from '../../../utils/timeAgo';
 
 interface Props {
     article: Article;
+    variant?: "default" | "barcelona";
 }
 
-export default function HorizontalCard({ article }: Props) {
-    return (
+export default function HorizontalCard({ article, variant = "default" }: Props) {
+  //const cardBg = variant === "barcelona" ? "bg-[#1a0010]" : "bg-[#1a1a1a]";
+  const cardBg = variant === "barcelona" 
+  ? "bg-gradient-to-r from-[#a50044]/20 to-[#004d98]/20" 
+  : "bg-[#1a1a1a]";
+  const borderColor = variant === "barcelona" ? "border-[#a50044]/30 hover:border-[#a50044]" : "border-gray-800 hover:border-gray-600";
+
+  return (
     
     <a href={article.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-row bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-colors"
+      className={`group flex flex-row ${cardBg} rounded-xl overflow-hidden border ${borderColor} hover:border-gray-600 transition-colors`}
     >
       {/* Image — left */}
       <div className="w-100 h-80 shrink-0 overflow-hidden bg-gray-800">

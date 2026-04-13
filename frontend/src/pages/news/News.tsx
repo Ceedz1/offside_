@@ -5,9 +5,12 @@ import { useNews } from "../../hooks/useNews";
 import { sliceArticles } from "../../utils/sliceArticles";
 
 export default function News() {
-    const { articles } = useNews();
+    const { articles, loading, error } = useNews();
     const { hero, topGrid, midRow1, midRow2, bottomRow } = sliceArticles(articles);
 
+    if (loading) return <p className="text-center text-gray-500 mt-10">Loading news...</p>;
+    if (error) return <p className="text-center text-red-400 mt-10">Error: {error}</p>;
+    
     return (
         <div className="flex flex-col gap-4">
             {hero && <HeroCard article={hero} />}

@@ -5,17 +5,20 @@ import { timeAgo } from '../../../utils/timeAgo';
 
 interface Props {
   article: Article;
+  variant?: "default" | "barcelona";
 }
 
-export default function SmallCard({ article }: Props) {
+export default function SmallCard({ article, variant = "default" }: Props) {
+  const borderColor = variant === "barcelona" ? "border-[#a50044]/30 hover:border-[#a50044]" : "border-gray-800 hover:border-gray-600";
+
   return (
     <a
       href={article.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col rounded-xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-colors"
+      className={`group flex flex-col rounded-xl overflow-hidden border ${borderColor} hover:border-gray-600 transition-colors`}
     >
-      <div className="h-48 overflow-hidden bg-gray-800">
+      <div className="h-48 overflow-hidden">
         {article.urlToImage ? (
           <img
             src={article.urlToImage}

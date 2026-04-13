@@ -5,11 +5,18 @@ import { timeAgo } from '../../../utils/timeAgo';
 
 interface Props {
     article: Article;
+    variant?: "default" | "barcelona";
 }
 
-export default function HerCard({ article }:Props) {
+export default function HerCard({ article, variant = "default" }:Props) {
+    //const cardBg = variant === "barcelona" ? "bg-[#1a0010]" : "bg-[#1a1a1a]";
+    const cardBg = variant === "barcelona" 
+    ? "bg-gradient-to-r from-[#a50044]/20 to-[#004d98]/20" 
+    : "bg-[#1a1a1a]";
+    const borderColor = variant === "barcelona" ? "border-[#a50044]/30 hover:border-[#a50044]" : "border-gray-800 hover:border-gray-600";
+
     return (
-        <a href={article.url} target="_blank" rel="noopener noreferrer" className="group grid grid-cols-1 sm:grid-cols-[6fr_4fr] bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-all duration-300">
+        <a href={article.url} target="_blank" rel="noopener noreferrer" className={`group grid grid-cols-1 sm:grid-cols-[6fr_4fr] ${cardBg} rounded-xl overflow-hidden border ${borderColor} hover:border-gray-600 transition-all duration-300`}>
             <div className="h-72 sm:h-96 overflow-hidden bg-gray-800">
                 {article.urlToImage ? (
                     <img 

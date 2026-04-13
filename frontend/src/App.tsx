@@ -1,33 +1,34 @@
 import Navbar from './components/Navbar';
 import News from './pages/news/News';
-import { useNews } from './hooks/useNews';
+import NewsBarcelona from './pages/news/NewsBarcelona';
+
 
 
 function App() {
-  const { loading, error } = useNews();
   
   return (
     <div className="min-h-screen">
       <Navbar />
       <main className="max-w-425 mx-auto px-4 pt-28 pb-8">
+
+        {/* General News */}
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-white">Today's News</h1>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-[16px] text-gray-400 mt-1">
             The hottest news and views from the world of football
           </p>
         </div>
-        {loading && (
-          <p className="text-center text-gray-500 mt-20">Loading news...</p>
-        )}
-        {error && (
-          <p className="text-center text-red-400 mt-20">Error: {error}</p>
-        )}
+        <News />
 
-        {!loading && !error && (
-          <div className="flex flex-col gap-4">
-            <News />
-          </div>
-        )}
+        {/* Barcelona Section */}
+        <div className="pt-28 mb-6">
+          <h1 className="text-2xl font-bold text-white">Blaugrana Corner</h1>
+          <p className="text-[16px] text-gray-400 mt-1">
+            By the fans, for the fans. The latest updates and deep dives into the heart of Catalonia.
+          </p>
+        </div>
+        <NewsBarcelona />
+
       </main>
     </div>
   )
