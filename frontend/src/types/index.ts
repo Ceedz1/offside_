@@ -16,3 +16,37 @@ export interface ApiResponse {
         articles: Article[];
     };
 }
+
+// ─── Matches ──────────────────────────────────────────
+
+export interface APIFootballTeam {
+    id: number;
+    name: string;
+    logo: string;
+}
+
+export interface APIFootballFixture {
+    fixture: {
+        id: number;
+        date: string;
+        status: { short: string; long: string; elapsed: number | null };
+    };
+    league: {
+        id: number;
+        name: string;
+        logo: string;
+        round: string;
+    };
+    teams: {
+        home: APIFootballTeam;
+        away: APIFootballTeam;
+    };
+    goals: {
+        home: number | null;
+        away: number | null;
+    };
+}
+
+export interface APIFootballResponse {
+    response: APIFootballFixture[];
+}
